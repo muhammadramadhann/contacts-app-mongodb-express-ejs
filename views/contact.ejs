@@ -1,0 +1,52 @@
+<div class="row my-4">
+    <div class="col-md-10">
+        <h2 class="mb-4 fw-bold">Contact List</h2>
+        <a href="/contact/add" class="btn btn-primary mb-2">Add New Contact</a>
+
+        <% if (message.length > 0) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <!-- <th scope="col">ID</th> -->
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (contacts.length < 1) { %>
+                    <tr>
+                        <td colspan="6">
+                            <div class="alert alert-warning text-center mt-3" role="alert">
+                                <h6 class="fw-bold mb-0">Data Still Empty</h6>
+                            </div>
+                        </td>
+                    </tr>
+                    <% } %> <% contacts.forEach((contact, index) => { %>
+                    <tr>
+                        <th scope="row"><%= index + 1 %></th>
+                        <!-- <td><%= contact.id %></td> -->
+                        <td><%= contact.name %></td>
+                        <td><%= contact.phone %></td>
+                        <td><%= contact.email %></td>
+                        <td>
+                            <a href="/contact/<%= contact.id %>" class="btn btn-secondary badge rounded-pill px-4 py-2">
+                                Detail
+                            </a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

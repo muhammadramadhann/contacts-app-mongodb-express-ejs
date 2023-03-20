@@ -1,0 +1,32 @@
+<div class="row my-4">
+    <div class="col-md-6">
+        <h4 class="mb-4 fw-semibold">Contact Form</h4>
+        <form method="post" action="/contact">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control shadow-none" name="name" id="name" value="<%= contact.name ?
+                contact.name : "" %>" required /> <% if (typeof errors !== "undefined") { %> <% errors.forEach(error =>
+                { %> <% if (error.param === "name") { %>
+                <p class="text-danger mt-1"><%= error.msg %></p>
+                <% } %> <% }) %> <% } %>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control shadow-none" name="email" id="email" value="<%= contact.email ?
+                contact.email : "" %>" required /> <% if (typeof errors !== "undefined") { %> <% errors.forEach(error =>
+                { %> <% if (error.param === "email") { %>
+                <p class="text-danger mt-1"><%= error.msg %></p>
+                <% } %> <% }) %> <% } %>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="text" class="form-control shadow-none" name="phone" id="phone" value="<%= contact.phone ?
+                contact.phone : "" %>" required /> <% if (typeof errors !== "undefined") { %> <% errors.forEach(error =>
+                { %> <% if (error.param === "phone") { %>
+                <p class="text-danger mt-1"><%= error.msg %></p>
+                <% } %> <% }) %> <% } %>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Contact</button>
+        </form>
+    </div>
+</div>

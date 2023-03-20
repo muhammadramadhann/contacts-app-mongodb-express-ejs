@@ -1,0 +1,41 @@
+<div class="row my-4">
+    <div class="col-md-8">
+        <h4 class="mb-3 fw-semibold">Contact Detail</h4>
+        <% if (!contact) { %>
+        <div class="alert alert-danger" role="alert">
+            <h5 class="fw-bold mb-2">Contact Not Found!</h5>
+            <a href="/contact">Back to Contact List</a>
+        </div>
+        <% } else { %>
+        <div class="card shadow-sm mb-4" style="width: 21rem">
+            <div class="card-body">
+                <h5 class="card-title"><%= contact.name %></h5>
+                <h6 class="card-subtitle mt-3 text-muted">
+                    <i class="bi bi-telephone me-1 text-primary"></i>
+                    <%= contact.phone %>
+                </h6>
+                <h6 class="card-subtitle mt-2 text-muted">
+                    <i class="bi bi-envelope me-1 text-primary"></i>
+                    <a class="text-decoration-none text-muted" href="mailto:<%= contact.email %>"
+                        ><%= contact.email %></a
+                    >
+                </h6>
+                <a href="/contact/edit/<%= contact.id %>" class="btn btn-secondary badge px-3 mt-4">Edit</a>
+                <form action="/contact?_method=DELETE" method="post" class="d-inline">
+                    <input type="hidden" name="id" value="<%= contact.id %>" />
+                    <button
+                        type="submit"
+                        class="btn btn-danger badge px-3 mt-4"
+                        onclick="return confirm('Are you sure want to delete this contact?')"
+                    >
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+        <a href="/contact" class="text-decoration-none text-primary"
+            ><i class="bi bi-chevron-left me-1"></i> Back to Contact List</a
+        >
+        <% } %>
+    </div>
+</div>

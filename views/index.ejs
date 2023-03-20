@@ -1,0 +1,14 @@
+<h1 class="my-4 fw-bold">Hello NodeJS Web Server</h1>
+<h3 class="fw-semibold mb-5">Hello <%= nama %></h3>
+
+<h5>Data User</h5>
+<% if (user.length < 1) { %>
+<p>
+    <i>Belum ada data user</i>
+</p>
+<% } else { %> <% user.forEach(data => { %>
+<ul>
+    <li>Nama: <%= data.nama %></li>
+    <li>Email: <%= data.email %></li>
+</ul>
+<% }) %> <% } %>
